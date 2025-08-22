@@ -49,3 +49,4 @@ htmlcov/
 *.cover
 .tox/
 .pytest_cache/
+.vercel
