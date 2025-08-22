@@ -21,6 +21,7 @@ load_dotenv(BASE_DIR / ".env")
 
 # Access the Paystack secret key
 PAYSTACK_SECRET_KEY = os.getenv("PAYSTACK_SECRET_KEY")
+# PAYSTACK_CALLBACK_URL = 'https://TwaleGadgets.com/payment/success'
 
 
 
@@ -130,3 +131,26 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'file': {
+            'level': 'INFO',
+            'class': 'logging.FileHandler',
+            'filename': 'payments.log',
+        },
+        'console': {
+            'level': 'INFO',
+            'class': 'logging.StreamHandler',
+        },
+    },
+    'loggers': {
+        'payments': {
+            'handlers': ['file', 'console'],
+            'level': 'INFO',
+            'propagate': True,
+        },
+    },
+}
