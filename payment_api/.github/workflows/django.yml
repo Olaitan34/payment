@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: [3.10]
+        python-version: [3.12.2]
 
     steps:
     - uses: actions/checkout@v2
@@ -39,4 +39,4 @@ jobs:
         vercel-token: ${{ secrets.VERCEL_TOKEN }} # set in GitHub secrets
         vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
         vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
-        working-directory: ./
+        working-directory: ./payment_api
