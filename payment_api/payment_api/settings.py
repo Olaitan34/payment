@@ -3,6 +3,7 @@ Django settings for payment_api project.
 Suited for Vercel deployment
 """
 import os
+import dj_database_url
 from dotenv import load_dotenv
 from pathlib import Path
 
@@ -12,15 +13,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 load_dotenv(BASE_DIR / ".env")
 
 # Security
-SECRET_KEY = os.getenv("DJANGO_SECRET_KEY", "unsafe-secret-key")
+SECRET_KEY = os.getenv("SECRET_KEY")
 DEBUG = os.getenv("DEBUG", "False").lower() == "true"
 
 # ✅ Allow Vercel domains and localhost for testing
-ALLOWED_HOSTS = [
-    ".vercel.app",
-    "localhost",
-    "127.0.0.1",
-]
+ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", "your-vercel-app.vercel.app,localhost,127.0.0.1").split(",")
 
 # Application definition
 INSTALLED_APPS = [
@@ -78,7 +75,10 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+database_url = os.environ.get("DATABASE_URL")
+DATABASES['default'] = dj_database_url.parse(database_url)
 
+# postgresql://payment_gzin_user:mBg0bVz5DlHPxdAr4Cjtj6yR64aaclT9@dpg-d2kmh53ipnbc73f9s4lg-a.oregon-postgres.render.com/payment_gzinpayment_gzin
 # Password validators
 AUTH_PASSWORD_VALIDATORS = [
     {"NAME": 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator'},

@@ -61,6 +61,9 @@ class PaymentInitiateView(generics.CreateAPIView):
                 status=status.HTTP_500_INTERNAL_SERVER_ERROR
             )
 
+class PaymentListCreateView(generics.ListCreateAPIView):
+    queryset = Payment.objects.all()
+    serializer_class = PaymentCreateSerializer
 
 class PaymentStatusView(generics.RetrieveAPIView):
     """
