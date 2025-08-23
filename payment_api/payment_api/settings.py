@@ -13,11 +13,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 load_dotenv(BASE_DIR / ".env")
 
 # Security
-SECRET_KEY = os.getenv("SECRET_KEY")
+SECRET_KEY = os.getenv("DJANGO_SECRET_KEY")
 DEBUG = os.getenv("DEBUG", "False").lower() == "true"
 
 # ✅ Allow Vercel domains and localhost for testing
-ALLOWED_HOSTS = ["payment-deploy.onrender.com"]
+ALLOWED_HOSTS = ["paymentssss.onrender.com"]
 
 # ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", "your-vercel-app.vercel.app,localhost,127.0.0.1").split(",")
 
