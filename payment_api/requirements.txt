@@ -2,6 +2,7 @@ asgiref==3.9.1
 certifi==2025.8.3
 charset-normalizer==3.4.3
 colorama==0.4.6
+dj-database-url==3.0.1
 Django==5.2.5
 django-phonenumber-field==8.1.0
 djangorestframework==3.16.1
@@ -11,6 +12,7 @@ iniconfig==2.1.0
 packaging==25.0
 phonenumbers==9.0.12
 pluggy==1.6.0
+psycopg2==2.9.10
 Pygments==2.19.2
 pytest==8.4.1
 pytest-django==4.11.1
@@ -20,4 +22,5 @@ requests-mock==1.12.1
 sqlparse==0.5.3
 tzdata==2025.2
 urllib3==2.5.0
-gunicorn==21.2.0
+waitress==3.0.2
+whitenoise==6.9.0

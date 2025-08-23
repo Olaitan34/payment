@@ -75,8 +75,8 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-database_url = os.environ.get("DATABASE_URL")
-DATABASES['default'] = dj_database_url.parse(database_url)
+# database_url = os.environ.get("DATABASE_URL")
+# DATABASES['default'] = dj_database_url.parse(database_url)
 
 # postgresql://payment_gzin_user:mBg0bVz5DlHPxdAr4Cjtj6yR64aaclT9@dpg-d2kmh53ipnbc73f9s4lg-a.oregon-postgres.render.com/payment_gzinpayment_gzin
 # Password validators
