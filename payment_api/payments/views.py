@@ -94,8 +94,6 @@ class PaymentStatusView(generics.RetrieveAPIView):
         if not payment.reference:
             return Response(
                 {
-                    "id": payment.id,
-                    "bd": payment_data["id"],
                     "payment": None,
                     "status": "error",
                     "message": "Payment reference not found"
@@ -115,8 +113,6 @@ class PaymentStatusView(generics.RetrieveAPIView):
                     payment.status = Payment.Status.SUCCESS
                 elif paystack_status == "failed":
                     payment.status = Payment.Status.FAILED
-                elif paystack_status == "abandoned":
-                    payment.status = Payment.Status.ABANDONED
                 else:
                     payment.status = Payment.Status.PENDING
                 

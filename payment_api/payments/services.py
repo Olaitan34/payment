@@ -81,7 +81,7 @@ class PaystackService:
         
         try:
             response = requests.get(
-                url, 
+                url,
                 headers=self._get_headers(),
                 timeout=30
             )
