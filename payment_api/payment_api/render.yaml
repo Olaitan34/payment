@@ -1,0 +1,30 @@
+services:
+  - type: web
+    name: payment-api
+    env: python
+    plan: free
+    buildCommand: |
+      pip install -r requirements.txt
+      python manage.py collectstatic --noinput
+    startCommand: |
+      python manage.py makemigrations --noinput && \
+      python manage.py migrate --noinput && \
+      python create_superuser.py && \
+      gunicorn payment_api.wsgi:application
+    envVars:
+      - key: DJANGO_SECRET_KEY
+        sync: false
+      - key: DJANGO_SUPERUSER_USERNAME
+        sync: false
+      - key: DJANGO_SUPERUSER_EMAIL
+        sync: false
+      - key: DJANGO_SUPERUSER_PASSWORD
+        sync: false
+      - key: DATABASE_URL
+        fromDatabase:
+          name: payment-db
+          property: connectionString
+
+databases:
+  - name: payment-db
+    plan: free
