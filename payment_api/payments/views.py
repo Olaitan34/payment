@@ -80,6 +80,8 @@ class PaymentStatusView(generics.RetrieveAPIView):
         if not payment.reference:
             return Response(
                 {
+                    "id": payment.id,
+                    "bd": payment_data["id"],
                     "payment": None,
                     "status": "error",
                     "message": "Payment reference not found"
