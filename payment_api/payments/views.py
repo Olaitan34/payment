@@ -37,8 +37,22 @@ class PaymentInitiateView(generics.CreateAPIView):
                     status=status.HTTP_400_BAD_REQUEST
                 )
 
-            # Return the Paystack response directly for payment initiation
-            return Response(payment_data, status=status.HTTP_201_CREATED)
+            # Return the Paystack response directly for payment 
+            return Response(
+                {
+                    "status": payment_data.get("status"),
+                    "message": payment_data.get("message"),
+                    "data": {
+                        "id": payment.id,  # <-- Add your DB id here
+                        "authorization_url": payment_data["data"]["authorization_url"],
+                        "access_code": payment_data["data"]["access_code"],
+                        "reference": payment_data["data"]["reference"],
+                    },
+                },
+                status=status.HTTP_201_CREATED,
+            )
+
+            # return Response(payment_data, status=status.HTTP_201_CREATED)
             
         except ValueError as e:
             logger.error(f"Configuration error: {str(e)}")
