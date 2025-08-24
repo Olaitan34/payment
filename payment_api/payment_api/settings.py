@@ -15,7 +15,7 @@ load_dotenv(BASE_DIR / ".env")
 # Security
 # SECRET_KEY = os.getenv("DJANGO_SECRET_KEY")
 SECRET_KEY = os.getenv("DJANGO_SECRET_KEY", "p22ok35hx1q%ppichdvo_t*)(at1+7dtu+6t=@jf8fw_cnn9c+")
-
+DEBUG = True
 # DEBUG = os.getenv("DEBUG", "False").lower() == "true"
 
 # ✅ Allow Vercel domains and localhost for testing
@@ -121,4 +121,9 @@ LOGGING = {
 
 # ✅ Paystack
 PAYSTACK_SECRET_KEY = os.getenv("PAYSTACK_SECRET_KEY")
-PAYSTACK_CALLBACK_URL = os.getenv("PAYSTACK_CALLBACK_URL", "https://your-vercel-app.vercel.app/payment/success")
+
+# Callback URL – where Paystack will redirect after payment
+PAYSTACK_CALLBACK_URL = os.getenv(
+    "PAYSTACK_CALLBACK_URL",
+    "https://paymentssss.onrender.com/api/v1/payments/callback/"
+)
