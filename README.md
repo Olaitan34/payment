@@ -1,24 +1,38 @@
+
+---
+
 # 💳 Paystack Payment System (Django REST API) - (BY FATOKI OLAITAN)
 
-A Django-based REST API integration with **Paystack** 🚀  
+A Django-based REST API integration with **Paystack** 🚀
 This package provides endpoints to **initialize** and **verify** payments, making it easy to add payment processing to your project.
+
+🌍 **Deployed on Render** → Try it out live:
+
+* 🔹 [POST /api/v1/payments/](https://paymentssss.onrender.com/api/v1/payments/) → Initiate a new payment
+* 🔹 [GET /api/v1/payments/{id}/](https://paymentssss.onrender.com/api/v1/payments/{id}) → Verify a payment by ID
+* 🔹 [Admin Panel](https://paymentssss.onrender.com/admin) → Manage payments & users
+
+🛠 **Superuser Credentials** (for testing only):
+
+* 👤 Username: `Ola34`
+* 🔑 Password: `12345678`
 
 ---
 
 ## ✨ Features
-- 🔐 Secure Paystack API integration
-- 🛠 Create & track payment records
-- 💸 Initialize payments with callback support
-- ✅ Verify payment status in real time
-- 📡 REST API endpoints for frontend/mobile apps
-- 🧪 Unit tests with mocked Paystack API responses
+
+* 🔐 Secure Paystack API integration
+* 🛠 Create & track payment records
+* 💸 Initialize payments with callback support
+* ✅ Verify payment status in real time
+* 📡 REST API endpoints for frontend/mobile apps
+* 🧪 Unit tests with mocked Paystack API responses
 
 ---
 
 ## 📂 Project Structure
 
 ```
-
 payments/
 │
 ├── models.py            # Database model for payments
@@ -26,19 +40,19 @@ payments/
 ├── services.py          # Paystack API service layer
 ├── views.py             # REST API views
 ├── urls.py              # App-specific routes
-├── test\_payments.py     # Unit tests with Pytest
-
-````
+├── test_payments.py     # Unit tests with Pytest
+```
 
 ---
 
 ## ⚙️ Installation & Setup
 
 ### 1️⃣ Clone Repository
+
 ```bash
 git clone https://github.com/yourusername/paystack-payment-system.git
 cd paystack-payment-system
-````
+```
 
 ### 2️⃣ Install Dependencies
 
@@ -78,10 +92,13 @@ python manage.py migrate
 
 ## 🚀 API Usage
 
-### 🔹 1. Initiate Payment
+### 🔹 1. **Initiate Payment**
 
 **Endpoint:**
 `POST /api/v1/payments/`
+
+👉 Use this to **start a new payment transaction**.
+It talks to Paystack and generates an **authorization URL** where your customer can pay.
 
 **Request Body:**
 
@@ -108,10 +125,13 @@ python manage.py migrate
 
 ---
 
-### 🔹 2. Verify Payment
+### 🔹 2. **Verify Payment**
 
 **Endpoint:**
 `GET /api/v1/payments/{id}/`
+
+👉 Use this to **check the status** of a specific payment using its unique ID.
+It confirms whether the payment is ✅ `success`, ❌ `failed`, ⏳ `pending`, or 📴 `abandoned`.
 
 **Response (✅ Success):**
 
@@ -138,6 +158,21 @@ python manage.py migrate
   "message": "Unable to verify payment"
 }
 ```
+
+---
+
+### 🔹 3. **Admin Panel**
+
+**Endpoint:**
+`/admin`
+
+👉 Here you can manage:
+
+* ✅ All payment transactions
+* 👤 Users & authentication
+* 🛠 Debug and monitor your app
+
+Use the provided **superuser credentials** to log in.
 
 ---
 
@@ -183,3 +218,6 @@ urlpatterns = [
 * 💡 Default currency = `NGN` (Nigerian Naira).
 * 🔑 Ensure your Paystack secret key is correct.
 * 🌍 Works in both local & production environments.
+* 🎉 Live demo already deployed on Render (see links above!)
+
+---
