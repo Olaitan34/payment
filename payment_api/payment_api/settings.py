@@ -19,7 +19,7 @@ DEBUG = True
 # DEBUG = os.getenv("DEBUG", "False").lower() == "true"
 
 # ✅ Allow Vercel domains and localhost for testing
-ALLOWED_HOSTS = ["paymentssss.onrender.com", "localhost", "127.0.0.1"]
+ALLOWED_HOSTS = ["paymentssss.onrender.com", "localhost", "127.0.0.1", "testserver"]
 
 
 # ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", "your-vercel-app.vercel.app,localhost,127.0.0.1").split(",")
@@ -35,9 +35,11 @@ INSTALLED_APPS = [
 
     # Third-party
     'rest_framework',
+    'rest_framework.authtoken',
 
     # Local apps
     'payments',
+    'waste_management',
 ]
 
 MIDDLEWARE = [
@@ -127,3 +129,19 @@ PAYSTACK_CALLBACK_URL = os.getenv(
     "PAYSTACK_CALLBACK_URL",
     "https://paymentssss.onrender.com/api/v1/payments/callback/"
 )
+
+# Custom User Model
+AUTH_USER_MODEL = 'waste_management.CustomUser'
+
+# Django REST Framework configuration
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+    ],
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated',
+    ],
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 20,
+}
